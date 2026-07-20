@@ -1,11 +1,546 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import VideoCard from '../components/VideoCard.astro';
+import TimelineItem from '../components/TimelineItem.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Video Data Lists
+const primaryWorks = [
+	{
+		title: "THE URBAN ESCAPE",
+		platform: "youtube" as const,
+		videoId: "v7kcoUvJvjE",
+		category: "Cinematic Shorts",
+		fileSize: "234 MB"
+	},
+	{
+		title: "STREET CULTURE 2026",
+		platform: "youtube" as const,
+		videoId: "Zp7Y1S7JmS0",
+		category: "Music Video",
+		fileSize: "189 MB"
+	},
+	{
+		title: "CYBERPUNK SHADOW DRIFT",
+		platform: "youtube" as const,
+		videoId: "5H5zXl44bQo",
+		category: "Promotional",
+		fileSize: "312 MB"
+	},
+	{
+		title: "COFFEE BREWING ASMR",
+		platform: "youtube" as const,
+		videoId: "GgVp7YI15iU",
+		category: "Commercial",
+		fileSize: "145 MB"
+	}
+];
+
+const secondaryWorks = [
+	{
+		title: "DESERT RAIN SOUNDS",
+		platform: "youtube" as const,
+		videoId: "_NszfVp-y2s",
+		category: "Sound Design",
+		fileSize: "201 MB"
+	},
+	{
+		title: "GLITCH ART EXHIBIT",
+		platform: "youtube" as const,
+		videoId: "X9LszsFq2o8",
+		category: "Motion Graphics",
+		fileSize: "98 MB"
+	},
+	{
+		title: "TOKYO DRIFT LITE",
+		platform: "youtube" as const,
+		videoId: "v7kcoUvJvjE",
+		category: "Short Film",
+		fileSize: "154 MB"
+	},
+	{
+		title: "ANALOG VINTAGE ROLL",
+		platform: "youtube" as const,
+		videoId: "Zp7Y1S7JmS0",
+		category: "Music Video",
+		fileSize: "287 MB"
+	}
+];
+
+// Experience Data List
+const experiences = [
+	{
+		year: "2024 - PRESENT",
+		role: "Senior Video Editor & Colorist",
+		company: "Studio Chromatic",
+		description: [
+			"Lead post-production workflows for international commercial campaigns.",
+			"Grade high-end digital media using custom desaturated and film-emulated LUT profiles.",
+			"Supervise junior editors and motion designers to deliver cohesive digital content."
+		],
+		tag: "LEAD"
+	},
+	{
+		year: "2022 - 2024",
+		role: "Video Editor & Motion Designer",
+		company: "Raw Footage Inc.",
+		description: [
+			"Designed full-scale motion graphic suites and text animation packages.",
+			"Edited 50+ vertical micro-narrative video campaigns for social platforms, resulting in 5M+ combined impressions.",
+			"Managed high-volume media ingestion, proxy workflow, and archiving."
+		],
+		tag: "FULL-TIME"
+	},
+	{
+		year: "2020 - 2022",
+		role: "Freelance Video Editor",
+		company: "Independent / Agencies",
+		description: [
+			"Crafted engaging vertical short-form narratives for diverse content creators.",
+			"Collaborated directly with producers and musicians to edit atmospheric music videos.",
+			"Established custom editing styles, pacing, and soundscapes tailored for vertical display platforms."
+		],
+		tag: "FREELANCE"
+	},
+	{
+		year: "2018 - 2020",
+		role: "Junior Editor & DIT",
+		company: "Reel Media House",
+		description: [
+			"Supported post-production team with multi-camera syncing and timeline assembly.",
+			"Generated proxy files and verified camera file backups on set (DIT operations).",
+			"Conducted sound syncing, dialogue cleanup, and basic color balancing."
+		],
+		tag: "JUNIOR"
+	}
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Vignesh | Video Editor & Colorist Portfolio">
+	<!-- SECTION 1: HERO SECTION -->
+	<section id="hero" class="hero-section">
+		<!-- Left: Text content -->
+		<div class="hero-content">
+			<div class="hero-meta-header">
+				<span class="mono-label">FILE_INFO: BIO.TXT</span>
+				<span class="status-badge">ONLINE</span>
+			</div>
+			
+			<div class="hero-main">
+				<h1 class="hero-name">VIGNESH KUMAR</h1>
+				<p class="hero-tagline">
+					CRAFTING HIGH-CONTRAST, DESATURATED VISUAL NARRATIVES. FOCUSING ON ANALOG PACING, EXPERIMENTAL SOUNDSCAPES, AND SHARP EDITS.
+				</p>
+				
+				<div class="hero-skills-group">
+					<span class="skills-title mono-label">SKILL_SET:</span>
+					<div class="skills-list">
+						<span class="skill-tag">COLOR_GRADING</span>
+						<span class="skill-tag">CINEMATIC_EDITS</span>
+						<span class="skill-tag">SOUND_DESIGN</span>
+						<span class="skill-tag">MOTION_GRAPHICS</span>
+						<span class="skill-tag">VERTICAL_NARRATIVES</span>
+					</div>
+				</div>
+			</div>
+
+			<div class="hero-meta-footer">
+				<a href="#best-works" class="btn-flat">[VIEW_PORTFOLIO]</a>
+				<span class="mono-label">CCT_004 // UTC+05:30</span>
+			</div>
+		</div>
+
+		<!-- Right: Artwork/Photo -->
+		<div class="hero-artwork-col">
+			<div class="artwork-viewfinder">
+				<div class="viewfinder-corner top-left"></div>
+				<div class="viewfinder-corner top-right"></div>
+				<div class="viewfinder-corner bottom-left"></div>
+				<div class="viewfinder-corner bottom-right"></div>
+				<img src="/video_editor_artwork.jpg" alt="Analog Video Editor Graphic Artwork" class="artwork-image" />
+				<div class="artwork-label">
+					<span class="mono-label">CAM_A // SHOT_01</span>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECTION 2: BEST WORKS SECTION -->
+	<section id="best-works" class="works-section">
+		<div class="section-banner">
+			<span class="mono-label">SEC_02 // GRID</span>
+			<h2 class="section-title">Best Works</h2>
+			<span class="mono-label">8_ITEMS_TOTAL</span>
+		</div>
+
+		<div class="works-container">
+			<!-- Primary Grid (4 items in a row) -->
+			<div class="works-grid">
+				{primaryWorks.map((work, idx) => (
+					<VideoCard
+						title={work.title}
+						platform={work.platform}
+						videoId={work.videoId}
+						category={work.category}
+						fileSize={work.fileSize}
+						index={idx + 1}
+					/>
+				))}
+			</div>
+
+			<!-- Secondary Expandable Grid (4 items) -->
+			<div id="expanded-works-grid" class="works-grid collapsible-grid collapsed">
+				{secondaryWorks.map((work, idx) => (
+					<VideoCard
+						title={work.title}
+						platform={work.platform}
+						videoId={work.videoId}
+						category={work.category}
+						fileSize={work.fileSize}
+						index={idx + 5}
+					/>
+				))}
+			</div>
+
+			<!-- Expand Toggle Button -->
+			<div class="expand-btn-wrapper">
+				<button id="toggle-works-btn" class="btn-flat">
+					[ ALL WORKS // EXPAND ]
+				</button>
+			</div>
+		</div>
+	</section>
+
+	<!-- SECTION 3: EXPERIENCE TIMELINE -->
+	<section id="experience" class="experience-section">
+		<div class="section-banner">
+			<span class="mono-label">SEC_03 // LOG</span>
+			<h2 class="section-title">Experience</h2>
+			<span class="mono-label">CHRONO_INDEX</span>
+		</div>
+
+		<div class="timeline-container">
+			{experiences.map((exp) => (
+				<TimelineItem
+					year={exp.year}
+					role={exp.role}
+					company={exp.company}
+					description={exp.description}
+					tag={exp.tag}
+				/>
+			))}
+		</div>
+	</section>
 </Layout>
+
+<script>
+	function setupToggle() {
+		const toggleBtn = document.getElementById('toggle-works-btn');
+		const expandedGrid = document.getElementById('expanded-works-grid');
+
+		if (!toggleBtn || !expandedGrid) return;
+
+		toggleBtn.addEventListener('click', () => {
+			const isCollapsed = expandedGrid.classList.contains('collapsed');
+			
+			if (isCollapsed) {
+				expandedGrid.classList.remove('collapsed');
+				toggleBtn.textContent = '[ SHOW LESS // COLLAPSE ]';
+			} else {
+				expandedGrid.classList.add('collapsed');
+				toggleBtn.textContent = '[ ALL WORKS // EXPAND ]';
+				
+				// Smoothly scroll back to the works section header so the user doesn't get disoriented
+				document.getElementById('best-works')?.scrollIntoView({ behavior: 'smooth' });
+			}
+		});
+	}
+
+	// Setup on script load and after view transitions
+	setupToggle();
+	document.addEventListener('astro:after-swap', setupToggle);
+</script>
+
+<style>
+	/* SECTION 1: HERO */
+	.hero-section {
+		display: grid;
+		grid-template-columns: 1.2fr 0.8fr;
+		min-height: 70vh;
+		border-bottom: var(--border-width) solid var(--border-color);
+	}
+
+	.hero-content {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		padding: 2.5rem;
+		border-right: var(--border-width) solid var(--border-color);
+	}
+
+	.hero-meta-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		opacity: 0.8;
+		font-size: 0.8rem;
+		border-bottom: 1px dashed var(--border-color);
+		padding-bottom: 1rem;
+	}
+
+	.status-badge {
+		background-color: var(--pastel-green);
+		color: #1a1a1a;
+		padding: 0.15rem 0.5rem;
+		font-weight: 700;
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		border: 1px solid var(--border-color);
+	}
+
+	.hero-main {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		padding: 2.5rem 0;
+	}
+
+	.hero-name {
+		font-size: clamp(3rem, 6vw, 4.5rem);
+		font-weight: 800;
+		color: var(--text-color);
+		letter-spacing: -0.03em;
+		line-height: 1.0;
+	}
+
+	.hero-tagline {
+		font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+		max-width: 600px;
+		color: var(--text-color);
+		opacity: 0.95;
+		font-family: var(--font-mono);
+		text-transform: uppercase;
+	}
+
+	.hero-skills-group {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		margin-top: 1rem;
+	}
+
+	.skills-title {
+		font-size: 0.75rem;
+		opacity: 0.7;
+	}
+
+	.skills-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.skill-tag {
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		font-weight: 700;
+		background-color: var(--card-bg);
+		border: 1px solid var(--border-color);
+		padding: 0.25rem 0.6rem;
+		color: var(--text-color);
+	}
+
+	.hero-meta-footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-top: 1px dashed var(--border-color);
+		padding-top: 1.5rem;
+	}
+
+	/* Artwork Column */
+	.hero-artwork-col {
+		background-color: var(--card-bg);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 3rem;
+		position: relative;
+	}
+
+	.artwork-viewfinder {
+		width: 100%;
+		max-width: 400px;
+		aspect-ratio: 1;
+		border: 1px solid var(--border-color);
+		position: relative;
+		padding: 1.5rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-color: var(--bg-color);
+		box-shadow: 6px 6px 0px var(--border-color);
+	}
+
+	.artwork-image {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		border: var(--border-width) solid var(--border-color);
+		filter: contrast(1.1) grayscale(0.2);
+	}
+
+	/* Viewfinder focus crop corners */
+	.viewfinder-corner {
+		position: absolute;
+		width: 16px;
+		height: 16px;
+		border: var(--border-width) solid var(--border-color);
+	}
+
+	.top-left {
+		top: 8px;
+		left: 8px;
+		border-right: none;
+		border-bottom: none;
+	}
+
+	.top-right {
+		top: 8px;
+		right: 8px;
+		border-left: none;
+		border-bottom: none;
+	}
+
+	.bottom-left {
+		bottom: 8px;
+		left: 8px;
+		border-right: none;
+		border-top: none;
+	}
+
+	.bottom-right {
+		bottom: 8px;
+		right: 8px;
+		border-left: none;
+		border-top: none;
+	}
+
+	.artwork-label {
+		position: absolute;
+		bottom: -1.25rem;
+		left: 0.5rem;
+		background-color: var(--bg-color);
+		padding: 0 0.5rem;
+		border: 1px solid var(--border-color);
+		font-size: 0.7rem;
+	}
+
+	/* SECTION BANNERS */
+	.section-banner {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: var(--border-width) solid var(--border-color);
+		padding: 1rem 1.5rem;
+		background-color: var(--bg-color);
+	}
+
+	.section-title {
+		font-size: clamp(1.5rem, 3vw, 2.25rem);
+		color: var(--text-color);
+	}
+
+	/* SECTION 2: BEST WORKS */
+	.works-section {
+		border-bottom: var(--border-width) solid var(--border-color);
+	}
+
+	.works-container {
+		padding: 3rem 1.5rem;
+		display: flex;
+		flex-direction: column;
+		gap: 2.5rem;
+	}
+
+	.works-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 2rem;
+		width: 100%;
+	}
+
+	/* Collapsible Grid Logic */
+	.collapsible-grid {
+		max-height: 2000px;
+		overflow: hidden;
+		transition: max-height 0.4s steps(8), opacity 0.3s ease, margin-top 0.3s ease;
+		opacity: 1;
+	}
+
+	.collapsible-grid.collapsed {
+		max-height: 0;
+		opacity: 0;
+		margin-top: -2rem;
+		pointer-events: none;
+	}
+
+	.expand-btn-wrapper {
+		display: flex;
+		justify-content: center;
+		margin-top: 1.5rem;
+	}
+
+	/* SECTION 3: EXPERIENCE */
+	.experience-section {
+		background-color: var(--bg-color);
+	}
+
+	.timeline-container {
+		max-width: 1200px;
+		margin: 0 auto;
+		border-left: var(--border-width) solid var(--border-color);
+		border-right: var(--border-width) solid var(--border-color);
+	}
+
+	/* Responsive Media Queries */
+	@media (max-width: 1024px) {
+		.works-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 768px) {
+		.hero-section {
+			grid-template-columns: 1fr;
+			min-height: auto;
+		}
+
+		.hero-content {
+			border-right: none;
+			border-bottom: var(--border-width) solid var(--border-color);
+			padding: 1.5rem;
+		}
+
+		.hero-main {
+			padding: 1.5rem 0;
+		}
+
+		.hero-artwork-col {
+			padding: 2rem;
+		}
+
+		.works-container {
+			padding: 2rem 1rem;
+		}
+
+		.works-grid {
+			grid-template-columns: 1fr;
+			gap: 1.5rem;
+		}
+
+		.timeline-container {
+			border-left: none;
+			border-right: none;
+		}
+	}
+</style>

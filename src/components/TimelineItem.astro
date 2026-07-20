@@ -1,0 +1,170 @@
+---
+interface Props {
+	year: string;
+	role: string;
+	company: string;
+	description: string[];
+	tag?: string;
+}
+
+const { year, role, company, description, tag } = Astro.props;
+---
+
+<div class="timeline-row">
+	<!-- Left column: Time Stamp -->
+	<div class="timeline-meta-col">
+		<span class="timeline-year">{year}</span>
+		{tag && <span class="timeline-tag">{tag}</span>}
+	</div>
+
+	<!-- Right column: Role & Achievements -->
+	<div class="timeline-content-col">
+		<div class="timeline-header">
+			<h3 class="timeline-role">{role}</h3>
+			<span class="timeline-company">{company}</span>
+		</div>
+		
+		<ul class="timeline-details">
+			{description.map((item) => (
+				<li>
+					<span class="bullet-char">→</span>
+					<p>{item}</p>
+				</li>
+			))}
+		</ul>
+	</div>
+</div>
+
+<style>
+	.timeline-row {
+		display: grid;
+		grid-template-columns: 240px 1fr;
+		gap: 2rem;
+		padding: 2.5rem 1.5rem;
+		border-bottom: var(--border-width) solid var(--border-color);
+		position: relative;
+	}
+
+	.timeline-row::before {
+		content: '';
+		position: absolute;
+		left: 240px;
+		top: 0;
+		bottom: 0;
+		width: var(--border-width);
+		background-color: var(--border-color);
+	}
+
+	.timeline-meta-col {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+		align-items: flex-start;
+		padding-right: 1.5rem;
+	}
+
+	.timeline-year {
+		font-family: var(--font-mono);
+		font-size: 1.15rem;
+		font-weight: 700;
+		color: var(--text-color);
+		background-color: var(--pastel-yellow);
+		padding: 0.25rem 0.5rem;
+		border: var(--border-width) solid var(--border-color);
+	}
+
+	.timeline-tag {
+		font-family: var(--font-mono);
+		font-size: 0.75rem;
+		text-transform: uppercase;
+		font-weight: 700;
+		border: 1px solid var(--border-color);
+		padding: 0.15rem 0.4rem;
+		opacity: 0.9;
+	}
+
+	.timeline-content-col {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		padding-left: 0.5rem;
+	}
+
+	.timeline-header {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.timeline-role {
+		font-family: var(--font-sans);
+		font-size: 1.5rem;
+		color: var(--text-color);
+		text-transform: uppercase;
+		font-weight: 800;
+	}
+
+	.timeline-company {
+		font-family: var(--font-mono);
+		font-size: 0.95rem;
+		font-weight: 700;
+		color: var(--accent-color);
+		text-transform: uppercase;
+	}
+
+	.timeline-details {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.timeline-details li {
+		display: flex;
+		gap: 0.75rem;
+		align-items: flex-start;
+	}
+
+	.bullet-char {
+		font-family: var(--font-mono);
+		font-weight: bold;
+		color: var(--text-color);
+		margin-top: 0.2rem;
+	}
+
+	.timeline-details p {
+		font-size: 0.9rem;
+		opacity: 0.85;
+	}
+
+	/* Responsive layouts */
+	@media (max-width: 768px) {
+		.timeline-row {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+			padding: 1.5rem 1rem;
+		}
+
+		.timeline-row::before {
+			display: none;
+		}
+
+		.timeline-meta-col {
+			padding-right: 0;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+			border-bottom: 1px dashed var(--border-color);
+			padding-bottom: 0.75rem;
+		}
+
+		.timeline-content-col {
+			padding-left: 0;
+		}
+
+		.timeline-role {
+			font-size: 1.25rem;
+		}
+	}
+</style>

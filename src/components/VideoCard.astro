@@ -1,0 +1,175 @@
+---
+interface Props {
+	title: string;
+	platform: 'youtube' | 'instagram';
+	videoId: string;
+	category: string;
+	fileSize?: string;
+	index: number;
+}
+
+const { title, platform, videoId, category, fileSize = "142 MB", index } = Astro.props;
+
+// Compute embed URLs
+const embedUrl = platform === 'youtube'
+	? `https://www.youtube.com/embed/${videoId}?modestbranding=1&rel=0`
+	: `https://www.instagram.com/reel/${videoId}/embed`;
+
+const paddedIndex = String(index).padStart(2, '0');
+---
+
+<div class="video-card">
+	<!-- Card Top Slate -->
+	<div class="card-header">
+		<span class="mono-label">REEL_{paddedIndex}</span>
+		<div class="header-dots">
+			<span class="status-indicator"></span>
+			<span class="mono-label">{fileSize}</span>
+		</div>
+	</div>
+
+	<!-- Video Embed Container -->
+	<div class="video-container">
+		{platform === 'youtube' ? (
+			<iframe
+				src={embedUrl}
+				title={title}
+				frameborder="0"
+				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+				allowfullscreen
+				loading="lazy"
+			></iframe>
+		) : (
+			<iframe
+				src={embedUrl}
+				title={title}
+				frameborder="0"
+				scrolling="no"
+				allowtransparency="true"
+				loading="lazy"
+			></iframe>
+		)}
+	</div>
+
+	<!-- Card Footer Details -->
+	<div class="card-footer">
+		<h4 class="video-title">{title}</h4>
+		<div class="footer-meta">
+			<span class="category-badge">{category}</span>
+			<span class="platform-label">{platform === 'youtube' ? 'YT_SHORTS' : 'IG_REEL'}</span>
+		</div>
+	</div>
+</div>
+
+<style>
+	.video-card {
+		background-color: var(--card-bg);
+		border: var(--border-width) solid var(--border-color);
+		display: flex;
+		flex-direction: column;
+		transition: transform 0.2s steps(4), box-shadow 0.2s steps(4);
+		box-shadow: 4px 4px 0px var(--border-color);
+	}
+
+	.video-card:hover {
+		transform: translate(-4px, -4px);
+		box-shadow: 8px 8px 0px var(--border-color);
+	}
+
+	.card-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0.5rem 0.75rem;
+		border-bottom: var(--border-width) solid var(--border-color);
+		font-size: 0.75rem;
+		background-color: var(--bg-color);
+	}
+
+	.header-dots {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.status-indicator {
+		width: 6px;
+		height: 6px;
+		background-color: var(--accent-color);
+		border-radius: 50%;
+	}
+
+	.video-container {
+		position: relative;
+		width: 100%;
+		/* 9:16 vertical ratio */
+		aspect-ratio: 9 / 16;
+		background-color: #000;
+		overflow: hidden;
+	}
+
+	.video-container iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+
+	/* Specific overrides for Instagram embed layout */
+	.video-container iframe[src*="instagram.com"] {
+		/* Instagram embeds have their own default header/footer in the iframe, 
+		   this scales it slightly or displays it cleanly */
+		width: 100%;
+		height: 100%;
+	}
+
+	.card-footer {
+		padding: 0.75rem;
+		border-top: var(--border-width) solid var(--border-color);
+		background-color: var(--bg-color);
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		flex-grow: 1;
+	}
+
+	.video-title {
+		font-family: var(--font-sans);
+		font-size: 0.95rem;
+		line-height: 1.2;
+		color: var(--text-color);
+		text-transform: uppercase;
+		word-break: break-word;
+	}
+
+	.footer-meta {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: auto;
+	}
+
+	.category-badge {
+		font-family: var(--font-mono);
+		font-size: 0.7rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		background-color: var(--pastel-green);
+		color: #1a1a1a; /* always high contrast dark text */
+		padding: 0.15rem 0.4rem;
+		border: 1px solid var(--border-color);
+	}
+
+	:global(html[prefers-color-scheme="dark"]) .category-badge {
+		color: #1a1a1a; /* ensure high contrast even in dark mode on green */
+	}
+
+	.platform-label {
+		font-family: var(--font-mono);
+		font-size: 0.7rem;
+		opacity: 0.7;
+		font-weight: bold;
+	}
+</style>
