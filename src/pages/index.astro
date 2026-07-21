@@ -1,7 +1,8 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import VideoCard from '../components/VideoCard.astro';
-import TimelineItem from '../components/TimelineItem.astro';
+import Layout from "../layouts/Layout.astro";
+import VideoCard from "../components/VideoCard.astro";
+import TimelineItem from "../components/TimelineItem.astro";
+import Image from "astro/components/Image.astro";
 
 // Video Data Lists
 const primaryWorks = [
@@ -156,7 +157,14 @@ const experiences = [
 				<div class="viewfinder-corner top-right"></div>
 				<div class="viewfinder-corner bottom-left"></div>
 				<div class="viewfinder-corner bottom-right"></div>
-				<img src="/video_editor_artwork.jpg" alt="Analog Video Editor Graphic Artwork" class="artwork-image" />
+				
+				<Image
+					src="/video_editor_artwork.jpg"
+					alt="Analog Video Editor Graphic Artwork"
+					class="artwork-image" 
+					width={1024}
+					height={1024}
+				/>
 				<div class="artwork-label">
 					<span class="mono-label">CAM_A // SHOT_01</span>
 				</div>
