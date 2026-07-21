@@ -68,12 +68,14 @@ const paddedIndex = String(index).padStart(2, '0');
 		border: var(--border-width) solid var(--border-color);
 		display: flex;
 		flex-direction: column;
-		transition: transform 0.2s steps(4), box-shadow 0.2s steps(4);
+		transition:
+			transform 0.2s ease-out,
+			box-shadow 0.2s ease-out;
 		box-shadow: 4px 4px 0px var(--border-color);
 	}
 
 	.video-card:hover {
-		transform: translate(-4px, -4px);
+		/* transform: translate(-4px, -4px); */
 		box-shadow: 8px 8px 0px var(--border-color);
 	}
 
