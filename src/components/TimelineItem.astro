@@ -67,7 +67,7 @@ const { year, role, company, description, tag } = Astro.props;
 		font-family: var(--font-mono);
 		font-size: 1.15rem;
 		font-weight: 700;
-		color: var(--text-color);
+		color: #000000; /* always solid black for high contrast */
 		background-color: var(--pastel-yellow);
 		padding: 0.25rem 0.5rem;
 		border: var(--border-width) solid var(--border-color);
@@ -79,8 +79,8 @@ const { year, role, company, description, tag } = Astro.props;
 		text-transform: uppercase;
 		font-weight: 700;
 		border: 1px solid var(--border-color);
+		background-color: var(--card-bg);
 		padding: 0.15rem 0.4rem;
-		opacity: 0.9;
 	}
 
 	.timeline-content-col {
@@ -133,8 +133,8 @@ const { year, role, company, description, tag } = Astro.props;
 	}
 
 	.timeline-details p {
-		font-size: 0.9rem;
-		opacity: 0.85;
+		font-size: 0.95rem;
+		color: var(--text-color);
 	}
 
 	/* Responsive layouts */
