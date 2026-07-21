@@ -1,21 +1,29 @@
 ---
 interface Props {
 	title: string;
-	platform: 'youtube' | 'instagram';
+	platform: "youtube" | "instagram";
 	videoId: string;
 	category: string;
-	fileSize?: string;
+	clientName?: string;
 	index: number;
 }
 
-const { title, platform, videoId, category, fileSize = "142 MB", index } = Astro.props;
+const {
+	title,
+	platform,
+	videoId,
+	category,
+	clientName = "142 MB",
+	index,
+} = Astro.props;
 
 // Compute embed URLs
-const embedUrl = platform === 'youtube'
-	? `https://www.youtube.com/embed/${videoId}?modestbranding=1&rel=0`
-	: `https://www.instagram.com/reel/${videoId}/embed`;
+const embedUrl =
+	platform === "youtube"
+		? `https://www.youtube.com/embed/${videoId}?modestbranding=1&rel=0`
+		: `https://www.instagram.com/reel/${videoId}/embed`;
 
-const paddedIndex = String(index).padStart(2, '0');
+const paddedIndex = String(index).padStart(2, "0");
 ---
 
 <div class="video-card">
@@ -24,28 +32,29 @@ const paddedIndex = String(index).padStart(2, '0');
 		<span class="mono-label">REEL_{paddedIndex}</span>
 		<div class="header-dots">
 			<span class="status-indicator"></span>
-			<span class="mono-label">{fileSize}</span>
+			<span class="mono-label">{clientName}</span>
 		</div>
 	</div>
 
 	<!-- Video Embed Container -->
 	<div class="video-container">
-		{platform === 'youtube' ? (
-			<iframe
-				src={embedUrl}
-				title={title}
-				frameborder="0"
-				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-				allowfullscreen
+		{
+			platform === "youtube" ? (
+				<iframe
+					src={embedUrl}
+					title={title}
+					frameborder="0"
+					allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+					allowfullscreen
 					// loading="lazy"
 				/>
-		) : (
-			<iframe
-				src={embedUrl}
-				title={title}
-				frameborder="0"
-				scrolling="no"
-				allowtransparency="true"
+			) : (
+				<iframe
+					src={embedUrl}
+					title={title}
+					frameborder="0"
+					scrolling="no"
+					allowtransparency="true"
 					// loading="lazy"
 				/>
 			)
@@ -57,7 +66,9 @@ const paddedIndex = String(index).padStart(2, '0');
 		<h4 class="video-title">{title}</h4>
 		<div class="footer-meta">
 			<span class="category-badge">{category}</span>
-			<span class="platform-label">{platform === 'youtube' ? 'YT_SHORTS' : 'IG_REEL'}</span>
+			<span class="platform-label"
+				>{platform === "youtube" ? "YT_SHORTS" : "IG_REEL"}</span
+			>
 		</div>
 	</div>
 </div>
@@ -161,17 +172,13 @@ const paddedIndex = String(index).padStart(2, '0');
 
 	.category-badge {
 		font-family: var(--font-mono);
-		font-size: 0.7rem;
-		font-weight: 700;
+		font-size: 0.75rem;
+		font-weight: 800;
 		text-transform: uppercase;
 		background-color: var(--pastel-green);
-		color: #1a1a1a; /* always high contrast dark text */
-		padding: 0.15rem 0.4rem;
-		border: 1px solid var(--border-color);
-	}
-
-	:global(html[prefers-color-scheme="dark"]) .category-badge {
-		color: #1a1a1a; /* ensure high contrast even in dark mode on green */
+		color: var(--badge-text-color);
+		padding: 0.2rem 0.5rem;
+		border: var(--border-width) solid var(--border-color);
 	}
 
 	.platform-label {
