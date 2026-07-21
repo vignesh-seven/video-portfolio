@@ -7,64 +7,64 @@ import Image from "astro/components/Image.astro";
 // Video Data Lists
 const primaryWorks = [
 	{
-		title: "THE URBAN ESCAPE",
-		platform: "youtube" as const,
-		videoId: "v7kcoUvJvjE",
-		category: "Cinematic Shorts",
-		fileSize: "234 MB"
+		title: "NIGHTLIFE EVENT TEASER",
+		platform: "instagram" as const,
+		videoId: "Da8P1aeoZZw",
+		category: "Event Teaser",
+		clientName: "MVM Worldwide",
 	},
 	{
-		title: "STREET CULTURE 2026",
-		platform: "youtube" as const,
-		videoId: "Zp7Y1S7JmS0",
-		category: "Music Video",
-		fileSize: "189 MB"
+		title: "JINXED NETWORK AD",
+		platform: "instagram" as const,
+		videoId: "DTqN28GkzKq",
+		category: "Advertisement",
+		clientName: "Jinxed Network",
 	},
 	{
-		title: "CYBERPUNK SHADOW DRIFT",
-		platform: "youtube" as const,
-		videoId: "5H5zXl44bQo",
-		category: "Promotional",
-		fileSize: "312 MB"
+		title: "AI Tutor Explainer",
+		platform: "instagram" as const,
+		videoId: "DagOr67PqTD",
+		category: "Explainer",
+		clientName: "312 MB",
 	},
 	{
-		title: "COFFEE BREWING ASMR",
-		platform: "youtube" as const,
-		videoId: "GgVp7YI15iU",
-		category: "Commercial",
-		fileSize: "145 MB"
-	}
+		title: "Founder UGC Reel",
+		platform: "instagram" as const,
+		videoId: "DFV2CGlptjn",
+		category: "Founder UGC",
+		clientName: "FLITE",
+	},
 ];
 
 const secondaryWorks = [
 	{
-		title: "DESERT RAIN SOUNDS",
-		platform: "youtube" as const,
-		videoId: "_NszfVp-y2s",
-		category: "Sound Design",
-		fileSize: "201 MB"
+		title: "NIGHTLIFE EVENT TEASER",
+		platform: "instagram" as const,
+		videoId: "DVRQ6vXDzqy",
+		category: "Event Teaser",
+		clientName: "MVM Worldwide",
 	},
 	{
 		title: "GLITCH ART EXHIBIT",
-		platform: "youtube" as const,
-		videoId: "X9LszsFq2o8",
+		platform: "instagram" as const,
+		videoId: "DXduizfjMma",
 		category: "Motion Graphics",
-		fileSize: "98 MB"
+		clientName: "98 MB",
 	},
 	{
 		title: "TOKYO DRIFT LITE",
 		platform: "youtube" as const,
 		videoId: "v7kcoUvJvjE",
 		category: "Short Film",
-		fileSize: "154 MB"
+		clientName: "154 MB",
 	},
 	{
 		title: "ANALOG VINTAGE ROLL",
 		platform: "youtube" as const,
 		videoId: "Zp7Y1S7JmS0",
 		category: "Music Video",
-		fileSize: "287 MB"
-	}
+		clientName: "287 MB",
+	},
 ];
 
 // Experience Data List
@@ -76,9 +76,9 @@ const experiences = [
 		description: [
 			"Lead post-production workflows for international commercial campaigns.",
 			"Grade high-end digital media using custom desaturated and film-emulated LUT profiles.",
-			"Supervise junior editors and motion designers to deliver cohesive digital content."
+			"Supervise junior editors and motion designers to deliver cohesive digital content.",
 		],
-		tag: "LEAD"
+		tag: "LEAD",
 	},
 	{
 		year: "2022 - 2024",
@@ -87,9 +87,9 @@ const experiences = [
 		description: [
 			"Designed full-scale motion graphic suites and text animation packages.",
 			"Edited 50+ vertical micro-narrative video campaigns for social platforms, resulting in 5M+ combined impressions.",
-			"Managed high-volume media ingestion, proxy workflow, and archiving."
+			"Managed high-volume media ingestion, proxy workflow, and archiving.",
 		],
-		tag: "FULL-TIME"
+		tag: "FULL-TIME",
 	},
 	{
 		year: "2020 - 2022",
@@ -98,9 +98,9 @@ const experiences = [
 		description: [
 			"Crafted engaging vertical short-form narratives for diverse content creators.",
 			"Collaborated directly with producers and musicians to edit atmospheric music videos.",
-			"Established custom editing styles, pacing, and soundscapes tailored for vertical display platforms."
+			"Established custom editing styles, pacing, and soundscapes tailored for vertical display platforms.",
 		],
-		tag: "FREELANCE"
+		tag: "FREELANCE",
 	},
 	{
 		year: "2018 - 2020",
@@ -109,10 +109,10 @@ const experiences = [
 		description: [
 			"Supported post-production team with multi-camera syncing and timeline assembly.",
 			"Generated proxy files and verified camera file backups on set (DIT operations).",
-			"Conducted sound syncing, dialogue cleanup, and basic color balancing."
+			"Conducted sound syncing, dialogue cleanup, and basic color balancing.",
 		],
-		tag: "JUNIOR"
-	}
+		tag: "JUNIOR",
+	},
 ];
 ---
 
@@ -121,32 +121,28 @@ const experiences = [
 	<section id="hero" class="hero-section">
 		<!-- Left: Text content -->
 		<div class="hero-content">
-			<div class="hero-meta-header">
-				<span class="mono-label">FILE_INFO: BIO.TXT</span>
-				<span class="status-badge">ONLINE</span>
-			</div>
-			
+			<!-- Simplified hero header -->
+
 			<div class="hero-main">
-				<h1 class="hero-name">VIGNESH KUMAR</h1>
+				<h1 class="hero-name">VIGNESH TIRUPATHI</h1>
 				<p class="hero-tagline">
-					CRAFTING HIGH-CONTRAST, DESATURATED VISUAL NARRATIVES. FOCUSING ON ANALOG PACING, EXPERIMENTAL SOUNDSCAPES, AND SHARP EDITS.
+					Creating stories that demand attention and drive results.
 				</p>
-				
+
 				<div class="hero-skills-group">
 					<span class="skills-title mono-label">SKILL_SET:</span>
 					<div class="skills-list">
-						<span class="skill-tag">COLOR_GRADING</span>
-						<span class="skill-tag">CINEMATIC_EDITS</span>
-						<span class="skill-tag">SOUND_DESIGN</span>
+						<span class="skill-tag">SHORT-FORM_VIDEOS</span>
+						<span class="skill-tag">LONG-FORM_VIDEOS</span>
 						<span class="skill-tag">MOTION_GRAPHICS</span>
-						<span class="skill-tag">VERTICAL_NARRATIVES</span>
+						<span class="skill-tag">SOUND_DESIGN</span>
+						<span class="skill-tag">BRAND_STRATEGY</span>
 					</div>
 				</div>
 			</div>
 
 			<div class="hero-meta-footer">
-				<a href="#best-works" class="btn-flat">[VIEW_PORTFOLIO]</a>
-				<span class="mono-label">CCT_004 // UTC+05:30</span>
+				<a href="#best-works" class="btn-flat">VIEW_PORTFOLIO</a>
 			</div>
 		</div>
 
@@ -175,38 +171,43 @@ const experiences = [
 	<!-- SECTION 2: BEST WORKS SECTION -->
 	<section id="best-works" class="works-section">
 		<div class="section-banner">
-			<span class="mono-label">SEC_02 // GRID</span>
 			<h2 class="section-title">Best Works</h2>
-			<span class="mono-label">8_ITEMS_TOTAL</span>
 		</div>
 
 		<div class="works-container">
 			<!-- Primary Grid (4 items in a row) -->
 			<div class="works-grid">
-				{primaryWorks.map((work, idx) => (
-					<VideoCard
-						title={work.title}
-						platform={work.platform}
-						videoId={work.videoId}
-						category={work.category}
-						fileSize={work.fileSize}
-						index={idx + 1}
-					/>
-				))}
+				{
+					primaryWorks.map((work, idx) => (
+						<VideoCard
+							title={work.title}
+							platform={work.platform}
+							videoId={work.videoId}
+							category={work.category}
+							clientName={work.clientName}
+							index={idx + 1}
+						/>
+					))
+				}
 			</div>
 
 			<!-- Secondary Expandable Grid (4 items) -->
-			<div id="expanded-works-grid" class="works-grid collapsible-grid collapsed">
-				{secondaryWorks.map((work, idx) => (
-					<VideoCard
-						title={work.title}
-						platform={work.platform}
-						videoId={work.videoId}
-						category={work.category}
-						fileSize={work.fileSize}
-						index={idx + 5}
-					/>
-				))}
+			<div
+				id="expanded-works-grid"
+				class="works-grid collapsible-grid collapsed"
+			>
+				{
+					secondaryWorks.map((work, idx) => (
+						<VideoCard
+							title={work.title}
+							platform={work.platform}
+							videoId={work.videoId}
+							category={work.category}
+							clientName={work.clientName}
+							index={idx + 5}
+						/>
+					))
+				}
 			</div>
 
 			<!-- Expand Toggle Button -->
@@ -221,51 +222,53 @@ const experiences = [
 	<!-- SECTION 3: EXPERIENCE TIMELINE -->
 	<section id="experience" class="experience-section">
 		<div class="section-banner">
-			<span class="mono-label">SEC_03 // LOG</span>
 			<h2 class="section-title">Experience</h2>
-			<span class="mono-label">CHRONO_INDEX</span>
 		</div>
 
 		<div class="timeline-container">
-			{experiences.map((exp) => (
-				<TimelineItem
-					year={exp.year}
-					role={exp.role}
-					company={exp.company}
-					description={exp.description}
-					tag={exp.tag}
-				/>
-			))}
+			{
+				experiences.map((exp) => (
+					<TimelineItem
+						year={exp.year}
+						role={exp.role}
+						company={exp.company}
+						description={exp.description}
+						tag={exp.tag}
+					/>
+				))
+			}
 		</div>
 	</section>
 </Layout>
 
 <script>
 	function setupToggle() {
-		const toggleBtn = document.getElementById('toggle-works-btn');
-		const expandedGrid = document.getElementById('expanded-works-grid');
+		const toggleBtn = document.getElementById("toggle-works-btn");
+		const expandedGrid = document.getElementById("expanded-works-grid");
 
 		if (!toggleBtn || !expandedGrid) return;
 
-		toggleBtn.addEventListener('click', () => {
-			const isCollapsed = expandedGrid.classList.contains('collapsed');
-			
+		toggleBtn.addEventListener("click", () => {
+			const isCollapsed = expandedGrid.classList.contains("collapsed");
+
 			if (isCollapsed) {
-				expandedGrid.classList.remove('collapsed');
-				toggleBtn.textContent = '[ SHOW LESS // COLLAPSE ]';
+				expandedGrid.classList.remove("collapsed");
+				toggleBtn.textContent = "[ SHOW LESS // COLLAPSE ]";
 			} else {
-				expandedGrid.classList.add('collapsed');
-				toggleBtn.textContent = '[ ALL WORKS // EXPAND ]';
-				
+				expandedGrid.classList.add("collapsed");
+				toggleBtn.textContent = "[ ALL WORKS // EXPAND ]";
+
 				// Smoothly scroll back to the works section header so the user doesn't get disoriented
-				document.getElementById('best-works')?.scrollIntoView({ behavior: 'smooth' });
+				document
+					.getElementById("best-works")
+					?.scrollIntoView({ behavior: "smooth" });
 			}
 		});
 	}
 
 	// Setup on script load and after view transitions
 	setupToggle();
-	document.addEventListener('astro:after-swap', setupToggle);
+	document.addEventListener("astro:after-swap", setupToggle);
 </script>
 
 <style>
@@ -280,7 +283,7 @@ const experiences = [
 	.hero-content {
 		display: flex;
 		flex-direction: column;
-		justify-content: space-between;
+		justify-content: center;
 		padding: 2.5rem;
 		border-right: var(--border-width) solid var(--border-color);
 	}
@@ -317,7 +320,7 @@ const experiences = [
 		font-weight: 800;
 		color: var(--text-color);
 		letter-spacing: -0.03em;
-		line-height: 1.0;
+		line-height: 1;
 	}
 
 	.hero-tagline {
@@ -326,7 +329,7 @@ const experiences = [
 		color: var(--text-color);
 		opacity: 0.95;
 		font-family: var(--font-mono);
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 	}
 
 	.hero-skills-group {
@@ -446,7 +449,7 @@ const experiences = [
 	/* SECTION BANNERS */
 	.section-banner {
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
 		align-items: center;
 		border-bottom: var(--border-width) solid var(--border-color);
 		padding: 1rem 1.5rem;
@@ -481,7 +484,10 @@ const experiences = [
 	.collapsible-grid {
 		max-height: 2000px;
 		overflow: hidden;
-		transition: max-height 0.4s steps(8), opacity 0.3s ease, margin-top 0.3s ease;
+		transition:
+			max-height 0.4s steps(8),
+			opacity 0.3s ease,
+			margin-top 0.3s ease;
 		opacity: 1;
 	}
 
