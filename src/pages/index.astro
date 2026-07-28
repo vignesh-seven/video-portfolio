@@ -385,6 +385,7 @@ const experiences = [
 		align-items: center;
 		/* border-top: 1px dashed var(--border-color); */
 		padding-top: 1.5rem;
+		min-width: max-content;
 	}
 
 	/* Artwork Column */
@@ -541,8 +542,9 @@ const experiences = [
 			grid-template-columns: repeat(2, 1fr);
 		}
 	}
-
+	
 	@media (max-width: 768px) {
+
 		.hero-section {
 			grid-template-columns: 1fr;
 			min-height: auto;
@@ -567,8 +569,8 @@ const experiences = [
 		}
 
 		.works-grid {
-			grid-template-columns: 1fr;
-			gap: 1.5rem;
+			grid-template-columns: repeat(2, 1fr);
+			gap: 1rem;
 		}
 
 		.timeline-container {
