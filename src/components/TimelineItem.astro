@@ -23,14 +23,16 @@ const { year, role, company, description, tag } = Astro.props;
 			<h3 class="timeline-role">{role}</h3>
 			<span class="timeline-company">{company}</span>
 		</div>
-		
+
 		<ul class="timeline-details">
-			{description.map((item) => (
-				<li>
-					<span class="bullet-char">→</span>
-					<p>{item}</p>
-				</li>
-			))}
+			{
+				description.map((item) => (
+					<li>
+						<span class="bullet-char">→</span>
+						<p>{item}</p>
+					</li>
+				))
+			}
 		</ul>
 	</div>
 </div>
@@ -46,7 +48,7 @@ const { year, role, company, description, tag } = Astro.props;
 	}
 
 	.timeline-row::before {
-		content: '';
+		content: "";
 		position: absolute;
 		left: 240px;
 		top: 0;
@@ -60,7 +62,8 @@ const { year, role, company, description, tag } = Astro.props;
 		flex-direction: column;
 		gap: 0.75rem;
 		align-items: flex-start;
-		padding-right: 1.5rem;
+		padding-right: 5rem;
+		/* background-color: red; */
 	}
 
 	.timeline-year {
