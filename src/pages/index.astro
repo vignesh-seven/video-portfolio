@@ -3,36 +3,41 @@ import Layout from "../layouts/Layout.astro";
 import VideoCard from "../components/VideoCard.astro";
 import TimelineItem from "../components/TimelineItem.astro";
 import Image from "astro/components/Image.astro";
+// import { Icon  } from "astro-iconset/components";
 
 // Video Data Lists
 const primaryWorks = [
 	{
-		title: "NIGHTLIFE EVENT TEASER",
-		platform: "youtube" as const,
-		videoId: "9FbW2FbRK7Q",
+		title: "Nightlife_Event_Teaser",
+		platform: "instagram" as const,
+		videoId: "9rY7IV7GEsjTjHLOyHrwrMoS8hhsiGMg9vg6hAKzLbQ",
 		category: "Event Teaser",
-		clientName: "MVM Worldwide",
+		viewCount: "61K views",
+		thumbnailTime: "22",
 	},
 	{
-		title: "JINXED NETWORK AD",
+		title: "Jinxed_Network_Ad",
 		platform: "instagram" as const,
-		videoId: "DTqN28GkzKq",
+		videoId: "z00VYJ37xbD4XXo4I825E01dLY5V1Uc83lu83UNYbB19U",
 		category: "Advertisement",
-		clientName: "Jinxed Network",
+		viewCount: "196K views",
+		thumbnailTime: "01",
 	},
 	{
-		title: "AI Tutor Explainer",
+		title: "Jinxed_Network_Ad",
 		platform: "instagram" as const,
-		videoId: "DagOr67PqTD",
-		category: "Explainer",
-		clientName: "312 MB",
+		videoId: "tZ56H3iBi7jXjcM4SDEdblQ9CGVhVUmPeLNpFoxmLDE",
+		category: "Advertisement",
+		viewCount: "19K views",
+		thumbnailTime: "04",
 	},
 	{
-		title: "Founder UGC Reel",
+		title: "Event_Teaser",
 		platform: "instagram" as const,
-		videoId: "DFV2CGlptjn",
+		videoId: "N9nl2cnl4lNh01aS02L02gmppc02lopyhzj02cjPxqeg1YiA",
 		category: "Founder UGC",
-		clientName: "FLITE",
+		viewCount: "95K views",
+		thumbnailTime: "36",
 	},
 ];
 
@@ -42,28 +47,32 @@ const secondaryWorks = [
 		platform: "instagram" as const,
 		videoId: "DVRQ6vXDzqy",
 		category: "Event Teaser",
-		clientName: "MVM Worldwide",
+		viewCount: "2.3M views",
+		thumbnailTime: "22",
 	},
 	{
 		title: "GLITCH ART EXHIBIT",
 		platform: "instagram" as const,
 		videoId: "DXduizfjMma",
 		category: "Motion Graphics",
-		clientName: "98 MB",
+		viewCount: "450K views",
+		thumbnailTime: "22",
 	},
 	{
 		title: "TOKYO DRIFT LITE",
 		platform: "youtube" as const,
 		videoId: "v7kcoUvJvjE",
 		category: "Short Film",
-		clientName: "154 MB",
+		viewCount: "1.8M views",
+		thumbnailTime: "22",
 	},
 	{
 		title: "ANALOG VINTAGE ROLL",
 		platform: "youtube" as const,
 		videoId: "Zp7Y1S7JmS0",
 		category: "Music Video",
-		clientName: "287 MB",
+		viewCount: "950K views",
+		thumbnailTime: "22",
 	},
 ];
 
@@ -126,7 +135,7 @@ const experiences = [
 			<div class="hero-main">
 				<h1 class="hero-name">VIGNESH TIRUPATHI</h1>
 				<p class="hero-tagline">
-					Creative Associate, Video Editor, Motion Designer, Storyteller.
+					Creative Associate, Video Editor from Nellore, India.
 				</p>
 
 				<div class="hero-skills-group">
@@ -153,11 +162,11 @@ const experiences = [
 				<div class="viewfinder-corner top-right"></div>
 				<div class="viewfinder-corner bottom-left"></div>
 				<div class="viewfinder-corner bottom-right"></div>
-				
+
 				<Image
 					src="/video_editor_artwork.jpg"
 					alt="Analog Video Editor Graphic Artwork"
-					class="artwork-image" 
+					class="artwork-image"
 					width={1024}
 					height={1024}
 				/>
@@ -184,8 +193,9 @@ const experiences = [
 							platform={work.platform}
 							videoId={work.videoId}
 							category={work.category}
-							clientName={work.clientName}
+							viewCount={work.viewCount}
 							index={idx + 1}
+							thumbnailTime={work.thumbnailTime}
 						/>
 					))
 				}
@@ -203,8 +213,9 @@ const experiences = [
 							platform={work.platform}
 							videoId={work.videoId}
 							category={work.category}
-							clientName={work.clientName}
+							viewCount={work.viewCount}
 							index={idx + 5}
+							thumbnailTime={work.thumbnailTime}
 						/>
 					))
 				}
