@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import VideoCard from "../components/VideoCard.astro";
 import TimelineItem from "../components/TimelineItem.astro";
 import Image from "astro/components/Image.astro";
-// import { Icon  } from "astro-iconset/components";
+import { Icon } from "astro-icon/components";
 
 // Video Data Lists
 const primaryWorks = [
@@ -35,7 +35,7 @@ const primaryWorks = [
 		title: "Event_Teaser",
 		platform: "instagram" as const,
 		videoId: "N9nl2cnl4lNh01aS02L02gmppc02lopyhzj02cjPxqeg1YiA",
-		category: "Founder UGC",
+		category: "Event Teaser",
 		viewCount: "95K views",
 		thumbnailTime: "36",
 	},
@@ -79,53 +79,48 @@ const secondaryWorks = [
 // Experience Data List
 const experiences = [
 	{
-		year: "2024 - PRESENT",
-		role: "Senior Video Editor & Colorist",
-		company: "Studio Chromatic",
+		year: "NOV 2025 - PRESENT",
+		role: "Video Editor & Creative Associate",
+		company: "Jinxed Network",
 		description: [
-			"Lead post-production workflows for international commercial campaigns.",
-			"Grade high-end digital media using custom desaturated and film-emulated LUT profiles.",
-			"Supervise junior editors and motion designers to deliver cohesive digital content.",
+			"Produce engaging short-form video advertisements tailored for Instagram.",
+			"Develop and edit promotional social media content for brands including MVM Worldwide, Jinxed Network, FLITE, and SAKAZA etc.",
 		],
-		tag: "LEAD",
+		tag: "PART-TIME",
 	},
 	{
-		year: "2022 - 2024",
-		role: "Video Editor & Motion Designer",
-		company: "Raw Footage Inc.",
+		year: "MAY 2026 - PRESENT",
+		role: "Video Editor & Script Writer",
+		company: "Leanprep Private Limited",
 		description: [
-			"Designed full-scale motion graphic suites and text animation packages.",
-			"Edited 50+ vertical micro-narrative video campaigns for social platforms, resulting in 5M+ combined impressions.",
-			"Managed high-volume media ingestion, proxy workflow, and archiving.",
+			"Produce short-form video advertisements for LeanPrep Products such as their coaching serices, AI Tutor etc.",
+			"Write engaging scripts for the video ads that align with the brand voice and marketing goals.",
 		],
-		tag: "FULL-TIME",
+		tag: "PART-TIME",
 	},
 	{
-		year: "2020 - 2022",
-		role: "Freelance Video Editor",
-		company: "Independent / Agencies",
+		year: "APR 2024 - OCT 2025",
+		role: "Video Editor",
+		company: "Jinxed Network",
 		description: [
-			"Crafted engaging vertical short-form narratives for diverse content creators.",
-			"Collaborated directly with producers and musicians to edit atmospheric music videos.",
-			"Established custom editing styles, pacing, and soundscapes tailored for vertical display platforms.",
+			"Edit social media content for brands including MVM Worldwide, and Flatlay.",
 		],
 		tag: "FREELANCE",
 	},
 	{
-		year: "2018 - 2020",
-		role: "Junior Editor & DIT",
-		company: "Reel Media House",
+		year: "OCT 2023 - MAR 2024",
+		role: "Video Editor",
+		company: "Encreators Software And Media Private Limited",
 		description: [
-			"Supported post-production team with multi-camera syncing and timeline assembly.",
-			"Generated proxy files and verified camera file backups on set (DIT operations).",
-			"Conducted sound syncing, dialogue cleanup, and basic color balancing.",
+			"Edit video essays spanning diverse topics such as Sports, Technology, and Celebrities.",
+			"Manage post-production workflows to ensure engaging pacing and narrative flow for essay-style content.",
 		],
-		tag: "JUNIOR",
+		tag: "FULL-TIME",
 	},
 ];
 ---
 
-<Layout title="Vignesh | Video Editor & Colorist Portfolio">
+<Layout title="Vignesh | Video Editor Portfolio">
 	<!-- SECTION 1: HERO SECTION -->
 	<section id="hero" class="hero-section">
 		<!-- Left: Text content -->
@@ -152,6 +147,19 @@ const experiences = [
 
 			<div class="hero-meta-footer">
 				<a href="#best-works" class="btn-flat">VIEW_PORTFOLIO</a>
+				<span>
+					<a href="https://wa.me/917901390532" class="btn-flat"
+						><Icon size="1.2rem" name="mdi:whatsapp" /></a
+					>
+					<a
+						href="https://www.instagram.com/vignesh__tpt/"
+						class="btn-flat"
+						><Icon size="1.2rem" name="mdi:instagram" /></a
+					>
+					<a href="mailto:vignesh77024@gmail.com" class="btn-flat"
+						><Icon size="1.2rem" name="mdi:email" /></a
+					>
+				</span>
 			</div>
 		</div>
 
