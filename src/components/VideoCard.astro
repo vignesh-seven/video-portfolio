@@ -6,8 +6,9 @@ interface Props {
   platform: "youtube" | "instagram";
   videoId: string;
   category: string;
-  clientName?: string;
+  viewCount?: string;
   index: number;
+  thumbnailTime?: string;
 }
 
 const {
@@ -15,8 +16,9 @@ const {
   platform,
   videoId,
   category,
-  clientName = "142 MB",
+  viewCount = "0 viewCount",
   index,
+  thumbnailTime,
 } = Astro.props;
 
 // Compute embed URLs
@@ -24,6 +26,15 @@ const embedUrl =
   platform === "youtube"
     ? `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0`
     : `https://www.instagram.com/reel/${videoId}/embed`;
+
+const externalUrl =
+  platform === "youtube"
+    ? `https://www.youtube.com/shorts/${videoId}`
+    : `https://www.instagram.com/reel/${videoId}/`;
+
+// Fallback to Mux test video ID if current ID is a YT/IG ID (11 chars)
+const fallbackPlaybackId = "DS00SgA1yBeMI02ypS5T00DT5779adA500Ad";
+const playbackId = videoId.length === 11 ? fallbackPlaybackId : videoId;
 
 const paddedIndex = String(index).padStart(2, "0");
 ---
@@ -34,23 +45,19 @@ const paddedIndex = String(index).padStart(2, "0");
     <span class="mono-label">REEL_{paddedIndex}</span>
     <div class="header-dots">
       <span class="status-indicator"></span>
-      <span class="mono-label">{clientName}</span>
+      <span class="mono-label">{viewCount}</span>
     </div>
   </div>
 
   <!-- Video Embed Container -->
   <div class="video-container">
-    <!-- <video controls autoplay></video> -->
-    <video playsinline loop controls autoplay muted>
-      <source src="/test.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-	<!-- <iframe
-	  src={embedUrl}
-	  frameborder="0"
-	  allowfullscreen
-	  allow="autoplay; encrypted-media"
-	></iframe> -->
+    <mux-player
+      playback-id={playbackId}
+      stream-type="on-demand"
+      metadata-video-title={title}
+      muted
+      playsinline
+      thumbnail-time={thumbnailTime}></mux-player>
   </div>
 
   <!-- Card Footer Details -->
@@ -77,24 +84,23 @@ const paddedIndex = String(index).padStart(2, "0");
   </div>
 </div>
 <script>
-	document.querySelectorAll('.video-container').forEach(function(video) {
-		video.addEventListener('mouseenter', function() {
-			// video.volume = 0.5;
-			// video.muted = false;
-			video.getElementsByTagName('video')[0].volume = 0.4;
-			video.getElementsByTagName('video')[0].muted = false;
-			video.getElementsByTagName('video')[0].style.filter = 'grayscale(0%)';
-			// video.getElementsByTagName('video')[0].play();
-		});
-		video.addEventListener('mouseleave', function() {
-			// video.volume = 0.5;
-			video.getElementsByTagName('video')[0].volume = 0.4;
-			video.getElementsByTagName('video')[0].muted = true;
-			video.getElementsByTagName('video')[0].style.filter = 'grayscale(100%)';
-			// video.getElementsByTagName('video')[0].style.filter = 'blur(10px)';
-			// video.getElementsByTagName('video')[0].pause();
-		});
-	});
+  import "@mux/mux-player";
+
+  document.querySelectorAll(".video-container").forEach(function (container) {
+    const player = container.querySelector("mux-player");
+    if (!player) return;
+
+    // container.addEventListener("mouseenter", function () {
+    //   player.volume = 0.4;
+    //   player.muted = false;
+    //   player.style.filter = "grayscale(0%)";
+    // });
+    // container.addEventListener("mouseleave", function () {
+    //   player.volume = 0.4;
+    //   player.muted = true;
+    //   player.style.filter = "grayscale(100%)";
+    // });
+  });
 </script>
 <style>
   .video-card {
@@ -105,12 +111,12 @@ const paddedIndex = String(index).padStart(2, "0");
     transition:
       transform 0.2s ease-out,
       box-shadow 0.2s ease-out;
-    box-shadow: 4px 4px 0px var(--border-color);
+    box-shadow: 0 0 0 var(--border-color);
   }
 
   .video-card:hover {
     /* transform: translate(-4px, -4px); */
-    box-shadow: 8px 8px 0px var(--border-color);
+    box-shadow: 0 0 0 0.25em var(--border-color);
   }
 
   .card-header {
@@ -145,36 +151,41 @@ const paddedIndex = String(index).padStart(2, "0");
     overflow: hidden;
   }
 
-  .video-container video {
+  .video-container mux-player {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     border: 0;
-	filter: grayscale(100%);
-  }
-  .video-container iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-  }
+    --media-object-fit: cover;
+    --media-object-position: center;
+    /* filter: grayscale(100%); */
+    /* transition: filter 0.2s ease-out; */
 
+    /* Theme colors matching project tokens */
+    --media-accent-color: var(--accent-color);
+    --media-primary-color: var(--text-color);
+    --media-secondary-color: var(--card-bg);
+    --controls-backdrop-color: transparent;
 
-  /* Specific overrides for Instagram embed layout */
-  /* .video-container iframe[src*="instagram.com"] {
-		Instagram embeds have their own default header/footer in the iframe, 
-		   this scales it slightly or displays it cleanly
-		width: 100%;
-		height: 100%;
-		.video-container iframe[src*="instagram.com"] {
-		width: 130%;
-		height: 100%;
-		left: -15%;
-	} */
+    /* Control customizations to show only play, volume, seek bar */
+    --top-controls: none;
+    --center-controls: "play";
+    --fullscreen-button: none;
+    --picture-in-picture-button: none;
+    --captions-button: none;
+    --airplay-button: none;
+    --cast-button: none;
+    --playback-rate-button: none;
+    --settings-menu: none;
+    --time-display: none;
+    --duration-display: none;
+    --seek-backward-button: none;
+    --seek-forward-button: none;
+
+    --media-object-fit: contain;
+  }
 
   .card-footer {
     padding: 0.75rem;
@@ -211,13 +222,12 @@ const paddedIndex = String(index).padStart(2, "0");
     color: var(--badge-text-color);
     padding: 0.2rem 0.5rem;
     border: var(--border-width) solid var(--border-color);
-    cursor: pointer;
   }
 
   .platform-label {
     font-family: var(--font-mono);
     font-size: 0.7rem;
-    opacity: 0.7;
+    /* opacity: 0.7; */
     font-weight: bold;
   }
 
