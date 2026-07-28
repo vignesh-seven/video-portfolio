@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Props {
   title: string;
   platform: "youtube" | "instagram";
@@ -55,13 +57,22 @@ const paddedIndex = String(index).padStart(2, "0");
   <div class="card-footer">
     <h4 class="video-title">{title}</h4>
     <div class="footer-meta">
-      <button class="category-badge" onclick="alert('Hello')">{category}</button
-      >
-      <!-- <button onclick="alert('Hello')">Hello</button> -->
-      <!-- <span class="category-badge">{category}</span> -->
-      <span class="platform-label"
+      <span class="category-badge">{category}</span>
+      <!-- <span class="platform-label"
         >{platform === "youtube" ? "YT_SHORTS" : "IG_REEL"}</span
+      > -->
+      <a
+        href={externalUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="open-link-in-new-tab"
+        aria-label={`Open ${platform} video in new tab`}
       >
+        <!-- <span>LINK_TO_</span> -->
+        <!-- <Icon size="1.5rem" name={platform} /> -->
+        <Icon size="1.5rem" name="arrow-up-right-from-square" />
+        <!-- <span>↗️</span> -->
+      </a>
     </div>
   </div>
 </div>
@@ -208,5 +219,17 @@ const paddedIndex = String(index).padStart(2, "0");
     font-size: 0.7rem;
     opacity: 0.7;
     font-weight: bold;
+  }
+
+  .open-link-in-new-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.2rem 0.2rem;
+    /* border: var(--border-width) solid var(--border-color); */
+    /* font-size: 2rem; */
+  }
+
+  .open-link-in-new-tab:hover {
   }
 </style>
