@@ -4,7 +4,8 @@ import { Icon } from "astro-icon/components";
 interface Props {
   title: string;
   platform: "youtube" | "instagram";
-  videoId: string;
+  playbackID: string;
+  externalID: string;
   category: string;
   viewCount?: string;
   index: number;
@@ -14,7 +15,8 @@ interface Props {
 const {
   title,
   platform,
-  videoId,
+  playbackID,
+  externalID,
   category,
   viewCount = "0 viewCount",
   index,
@@ -22,19 +24,19 @@ const {
 } = Astro.props;
 
 // Compute embed URLs
-const embedUrl =
-  platform === "youtube"
-    ? `https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0`
-    : `https://www.instagram.com/reel/${videoId}/embed`;
+// const embedUrl =
+//   platform === "youtube"
+//     ? `https://www.youtube.com/embed/${playbackID}?autoplay=1&mute=1&controls=0`
+//     : `https://www.instagram.com/reel/${playbackID}/embed`;
 
 const externalUrl =
   platform === "youtube"
-    ? `https://www.youtube.com/shorts/${videoId}`
-    : `https://www.instagram.com/reel/${videoId}/`;
+    ? `https://www.youtube.com/shorts/${externalID}`
+    : `https://www.instagram.com/reel/${externalID}/`;
 
 // Fallback to Mux test video ID if current ID is a YT/IG ID (11 chars)
 const fallbackPlaybackId = "DS00SgA1yBeMI02ypS5T00DT5779adA500Ad";
-const playbackId = videoId.length === 11 ? fallbackPlaybackId : videoId;
+const playbackId = playbackID.length === 11 ? fallbackPlaybackId : playbackID;
 
 const paddedIndex = String(index).padStart(2, "0");
 ---
@@ -73,12 +75,10 @@ const paddedIndex = String(index).padStart(2, "0");
         target="_blank"
         rel="noopener noreferrer"
         class="open-link-in-new-tab"
+        href={externalUrl}
         aria-label={`Open ${platform} video in new tab`}
       >
-        <!-- <span>LINK_TO_</span> -->
-        <!-- <Icon size="1.5rem" name={platform} /> -->
-        <Icon size="1.5rem" name="arrow-up-right-from-square" />
-        <!-- <span>↗️</span> -->
+          <Icon size="1.5rem" name="arrow-up-right-from-square" />
       </a>
     </div>
   </div>
