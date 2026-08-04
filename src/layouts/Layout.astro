@@ -1,4 +1,6 @@
 ---
+import { Icon } from 'astro-icon/components';
+
 interface Props {
 	title?: string;
 }
@@ -28,8 +30,13 @@ const { title = "Analog Portfolio - Video Editor" } = Astro.props;
 		<header class="viewfinder-header">
 			<div class="viewfinder-top">
 				<div class="rec-indicator">
-					<span class="rec-dot"></span>
-					<span class="viewfinder-stat">REC</span>
+					<Icon size="0.9rem" name="mdi:cursor-default" />
+					<Icon size="0.9rem" name="mdi:content-cut" />
+					<!-- <Icon size="0.9rem" name="mdi:magnet" /> -->
+					<!-- <Icon size="0.9rem" name="mdi:link-variant" /> -->
+					<Icon size="0.9rem" name="mdi:format-text" />
+					<!-- <span class="rec-dot"></span>
+					<span class="viewfinder-stat">REC</span> -->
 				</div>
 				<div class="timecode-display">
 					<span class="viewfinder-stat">TC</span>
