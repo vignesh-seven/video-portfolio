@@ -308,7 +308,7 @@ const { title = "Analog Portfolio - Video Editor" } = Astro.props;
 		height: 10px;
 		background-color: #ff0000;
 		border-radius: 50%;
-		animation: rec-blink 1s infinite steps(2);
+		animation: rec-blink 1s infinite steps(1);
 	}
 
 	.camera-info {
@@ -391,11 +391,13 @@ const { title = "Analog Portfolio - Video Editor" } = Astro.props;
 
 	/* Animations */
 	@keyframes rec-blink {
-		0%,
-		100% {
-			opacity: 1;
+		0% {
+			opacity: 0;
 		}
 		50% {
+			opacity: 1;
+		}
+		0% {
 			opacity: 0;
 		}
 	}
