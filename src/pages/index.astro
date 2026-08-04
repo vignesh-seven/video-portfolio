@@ -65,22 +65,22 @@ const secondaryWorks = [
     thumbnailTime: "02",
   },
   {
-    title: "TOKYO DRIFT LITE",
+    title: "EMPTY",
     platform: "youtube" as const,
-    playbackID: "v7kcoUvJvjE",
+    playbackID: "",
     externalID: "",
-    category: "Short Film",
-    viewCount: "1.8M views",
-    thumbnailTime: "22",
+    category: "EMPTY",
+    viewCount: "- views",
+    thumbnailTime: "",
   },
   {
-    title: "ANALOG VINTAGE ROLL",
+    title: "EMPTY",
     platform: "youtube" as const,
-    playbackID: "Zp7Y1S7JmS0",
+    playbackID: "",
     externalID: "",
-    category: "Music Video",
-    viewCount: "950K views",
-    thumbnailTime: "22",
+    category: "EMPTY",
+    viewCount: "- views",
+    thumbnailTime: "",
   },
 ];
 
@@ -156,13 +156,13 @@ const experiences = [
       <div class="hero-meta-footer">
         <a href="#best-works" class="btn-flat">VIEW_PORTFOLIO</a>
         <span>
-          <a href="https://wa.me/917901390532" class="btn-flat"
+          <a href="https://wa.me/917901390532" class="btn-flat" aria-label={`Link to WhatsApp Chat`} target="_blank"
             ><Icon size="1.2rem" name="mdi:whatsapp" /></a
           >
-          <a href="https://www.instagram.com/vignesh__tpt/" class="btn-flat"
+          <a href="https://www.instagram.com/vignesh__tpt/" class="btn-flat" aria-label={`Link to Instagram`} target="_blank"
             ><Icon size="1.2rem" name="mdi:instagram" /></a
           >
-          <a href="mailto:vignesh77024@gmail.com" class="btn-flat"
+          <a href="mailto:vignesh77024@gmail.com" class="btn-flat" aria-label={`Link to Email`} target="_blank"
             ><Icon size="1.2rem" name="mdi:email" /></a
           >
         </span>
@@ -181,6 +181,7 @@ const experiences = [
           src="/video_editor_artwork.jpg"
           alt="Analog Video Editor Graphic Artwork"
           class="artwork-image"
+		  loading="eager"
           width={1024}
           height={1024}
         />
