@@ -157,7 +157,7 @@ const experiences = [
 
         <a 
         href="https://drive.google.com/file/d/1CWoHLQx8VXQtUoi3pOBpPjeESw70Ot8p/view?usp=drive_link" 
-        class="btn-flat" 
+        class="btn-flat main-btn" 
         aria-label={`Link to Resume (Google Drive)`} 
         target="_blank"
         title="Google Drive link to Resume">
@@ -166,7 +166,7 @@ const experiences = [
           <!-- <Icon size="1.5rem" name="mdi:tray-arrow-down" /> -->
         </a>
         
-        <span>
+        <span class="social-btns">
           <a href="https://wa.me/917901390532" class="btn-flat" aria-label={`Link to WhatsApp Chat`} target="_blank"
           ><Icon size="1.5rem" name="mdi:whatsapp" /></a
           >
@@ -406,8 +406,11 @@ const experiences = [
     /* border-top: 1px dashed var(--border-color); */
     padding-top: 1.5rem;
     min-width: max-content;
+    
   }
-
+    .social-btns > * {
+      margin-left: 0.5rem;
+    }
   /* Artwork Column */
   .hero-artwork-col {
     background-color: var(--card-bg);
@@ -602,7 +605,24 @@ const experiences = [
 		flex-direction: column;
 		align-items: flex-start;
 		gap: 0.5rem;
-	}
+    
+    
+	} 
+  .social-btns {
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+
+    
+  }
+  .social-btns > * {
+    flex-grow: 1;
+    margin: 0;
+  }
+  .main-btn {
+    width: 100%;
+  }
+
 
   }
 </style>
